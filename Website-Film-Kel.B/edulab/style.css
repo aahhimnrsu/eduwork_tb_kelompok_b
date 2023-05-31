@@ -449,8 +449,8 @@ html {
 }
 
 body {
-	background-color: #000;
-	background-image: url(images/danur1.jpg);
+	background-color: white;
+
 	
 	/* Fallback for when there is no custom background color defined. */
 }
@@ -803,6 +803,8 @@ ul > li {
 	/*font-family: 'Raleway', sans-serif;*/
 	/*color: #fff;*/
 	z-index: 9;
+	display: flex;
+	
 }
 
 .banner .container h1 {
@@ -812,8 +814,10 @@ ul > li {
 	margin-top: 5em;
 }
 
-.banner .container h3 {
+.banner .container a {
 	font-weight: normal;
+	margin-left: 50px;
+	color: white;
 	/*font-size: 2rem;*/
 }
 
@@ -1796,11 +1800,13 @@ aside .news-letter hr {
 /*======Recent Posts==============*/
 
 .page-content .container aside .recent-post {
-	background: #f5f5f5;
+
 	padding: 1.5625em;
 	padding-bottom: 2.5em;
-	margin-top: 3.8125em;
+	margin-top: 140px;
 	margin-bottom: 4.0625em;
+	width: 140%;
+	margin-left: -220px;
 }
 
 .page-content .recent-post .post {
@@ -1809,12 +1815,18 @@ aside .news-letter hr {
 	flex-flow: column wrap;
 }
 
+.page-content .recent-post .review .bintang span{
+	color: #f5c518;
+	font-size: 30px;
+}
+
 .page-content .container aside .recent-post h2 {
 	/*font-size: 2rem;*/
 	/*color: #000;*/
 	text-transform: capitalize;
 	margin-bottom: 1.5em;
 	margin-top: 0.25em;
+	color: white;
 }
 
 .page-content .recent-post .post-wrap {
@@ -2012,10 +2024,13 @@ aside .news-letter hr {
 	left: 2px;
 }
 
+
+
 /*====Comment Section=============*/
 
 .comment-section {
 	/*font-family: 'Raleway', sans-serif;*/
+	background-color: #000;
 }
 
 .comments-area ol{
@@ -2025,8 +2040,9 @@ aside .news-letter hr {
 }
 .comments-area, .comments-area.form{
 	margin-bottom: 60px;
-	background: #fafbfc;
+	background: #ffffff;
 	padding: 45px 40px;
+	border: solid 1px;
 }
 .comments-area ol li{
 	border-top: 1px solid #dfdfdf;
