@@ -29,7 +29,7 @@ if($cek > 0){
 	}else if($data['role']=="user"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
-		$status = isset($_SESSION['status']);
+		$_SESSION['status'] = "login";
 		$_SESSION['role'] = "user";
 		// alihkan ke halaman dashboard pegawai
 		header("location:../index.php?status=true");

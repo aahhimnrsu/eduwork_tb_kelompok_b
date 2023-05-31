@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE php>
 <php lang="en">
 
@@ -97,7 +98,7 @@
                                 <!-- header auth -->
                                 <div class="header__auth">
                                     <?php 
-                                    if(empty($status)) { ?>
+                                    if(isset($_SESSION['status'])) { ?>
                                         <a href="signin.php" class="header__sign-in">
                                             <i class="icon ion-ios-log-in"></i>
                                             <span>Sign in</span>
