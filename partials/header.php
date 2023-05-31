@@ -99,14 +99,14 @@
                                 <div class="header__auth">
                                     <?php 
                                     if(isset($_SESSION['status'])) { ?>
-                                        <a href="signin.php" class="header__sign-in">
-                                            <i class="icon ion-ios-log-in"></i>
-                                            <span>Sign in</span>
-                                        </a>
-                                    <?php }else{ ?>
                                         <a href="proses/logout.php" class="header__sign-in">
                                             <i class="icon ion-ios-log-in"></i>
-                                            <span>logout</span>
+                                            <span>Logout</span>
+                                        </a>
+                                    <?php }else{ ?>
+                                        <a href="signin.php" class="header__sign-in">
+                                            <i class="icon ion-ios-log-in"></i>
+                                            <span>sign in</span>
                                         </a>
                                     <?php } ?>
                                 </div>
