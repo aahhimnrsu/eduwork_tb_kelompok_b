@@ -3,6 +3,12 @@ include 'partials/header.php';
 include 'partials/navbar.php';
 include 'partials/sidebar.php' ?>
 
+<?php 
+    require("../proses/koneksi.php");
+
+    $query = mysqli_query($db, 'SELECT * FROM film WHERE jenis="Series"');
+?>
+
 <div class="page-content">
   <div class="page-header">
     <div class="container-fluid">
@@ -27,13 +33,23 @@ include 'partials/sidebar.php' ?>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-              </tr>
+              <?php if(mysqli_num_rows($query) > 0) {?>
+                <?php 
+                  $no = 1;
+                  while ($data= mysqli_fetch_array($query)) {      
+                ?>
+                  <tr>
+                    <td><?php echo $no?></td>
+                    <td><?php echo $data["judul"]?></td>
+                    <td><?php echo $data["genre"]?></td>
+                    <td><?php echo $data["tahun"]?></td>
+                    <td>
+                      <a href="edit.php?id=<?php echo $data["id"]?>">Update</a> |
+                      <a href="hapus.php?id=<?php echo $data["id"]?>">Hapus</a>
+                    </td>                                     
+                  </tr>
+                <?php $no++; }?>
+              <?php } ?>
             </tbody>
           </table>
         </div>
