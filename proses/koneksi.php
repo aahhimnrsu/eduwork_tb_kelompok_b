@@ -3,7 +3,7 @@
     $server = "localhost";
     $user = "root";
     $password = "";
-    $nama_database = "db_bmov";
+    $nama_database = "db_film";
     
     $db = mysqli_connect($server,$user, $password, $nama_database); 
     
