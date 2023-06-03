@@ -9,10 +9,12 @@
 	<!-- details content -->
 	<div class="container">
 		<div class="row">
-			<?php include 'proses/koneksi.php';
-			$id = $_GET['id'];
-			$data = mysqli_query($db, "SELECT * FROM tb_film WHERE id='$id'");
-			while ($d = mysqli_fetch_array($data)) { ?>
+				<?php include 'proses/koneksi.php';
+				$id = $_GET['id'];
+				$data = mysqli_query($db, "SELECT * FROM tb_film WHERE id='$id'");
+				$cekrate = mysqli_query($db, "SELECT ROUND(AVG(rating),1) FROM tb_review WHERE id_film='$id'");
+				$rate = $cekrate->fetch_assoc();
+				while ($d = mysqli_fetch_array($data)) { ?>
 				<!-- title -->
 				<div class="col-12">
 					<h1 class="details__title"><?= $d['judul'] ?></h1>
@@ -35,6 +37,9 @@
 							<div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
 								<div class="card__content">
 									<div class="card__wrap">
+										<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rate as $rate) {
+																										print_r($rate);
+																									} ?></span>
 										<ul class="card__list">
 											<li>HD</li>
 											<li>1080p</li>
@@ -61,7 +66,7 @@
 
 				<!-- player -->
 				<div class="col-12 col-xl-6">
-					<iframe width="600px" height="320px" src="<?= $d['link_video']?>">
+					<iframe width="600px" height="320px" src="<?= $d['link_video'] ?>">
 					</iframe>
 				</div>
 				<!-- end player -->
@@ -114,7 +119,9 @@
 					<!-- content tabs nav -->
 					<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a>
+							<?php if (isset($_SESSION['status'])) { ?>
+								<a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a>
+							<?php } ?>
 						</li>
 					</ul>
 					<!-- end content tabs nav -->
@@ -140,211 +147,149 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-12 col-lg-8 col-xl-8">
-				<!-- content tabs -->
-				<div class="tab-content" id="myTabContent">
+	<?php if (isset($_SESSION['status'])) { ?>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-8 col-xl-8">
+					<!-- content tabs -->
+					<div class="tab-content" id="myTabContent">
 
+						<div class="tab-pane fade show active" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
+							<div class="row">
+								<!-- reviews -->
+								<div class="col-12">
+									<div class="reviews">
+										<ul class="reviews__list">
+											<?php
+											$review = mysqli_query($db, "SELECT tb_review.*, tb_user.nama as nama FROM tb_review LEFT JOIN tb_user ON tb_review.id_user = tb_user.id WHERE id_film='$id'");
+											while ($r = mysqli_fetch_array($review)) { ?>
+												<li class="reviews__item">
+													<div class="reviews__autor">
+														<img class="reviews__avatar" src="assets/img/user.png" alt="">
+														<span class="reviews__name"><?= $r['subject'] ?></span>
+														<span class="reviews__time"><?= $r['terakhir_diubah'] ?> by <?= $r['nama'] ?></span>
 
-					<div class="tab-pane fade show active" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
-						<div class="row">
-							<!-- reviews -->
-							<div class="col-12">
-								<div class="reviews">
-									<ul class="reviews__list">
-										<li class="reviews__item">
-											<div class="reviews__autor">
-												<img class="reviews__avatar" src="assets/img/user.png" alt="">
-												<span class="reviews__name">Best Marvel movie in my opinion</span>
-												<span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
+														<span class="reviews__rating"><i class="icon ion-ios-star"></i><?= $r['rating'] ?></span>
+													</div>
+													<p class="reviews__text"><?= $r['review'] ?></p>
+												</li>
+											<?php
+											}
+											?>
+										</ul>
 
-												<span class="reviews__rating"><i class="icon ion-ios-star"></i>8.4</span>
-											</div>
-											<p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-										</li>
+										<form action="proses/prosesreview.php" method="post" class="form">
+											<input type="text" class="form__input" name="id_user" hidden value="<?= $_SESSION['id'] ?>">
+											<input type="text" class="form__input" name="id_film" hidden value="<?= $id ?>">
+											<input type="text" class="form__input" name="subject" placeholder="Subject">
+											<textarea class="form__textarea" placeholder="Review" name="review"></textarea>
+											<input type="number" class="form__input" placeholder="Rating" min="0" max="10" step="0.1" style="margin-top: 10px; width:20%;" name="rating">
+											<button type="submit" class="form__btn">Send</button>
+										</form>
+									</div>
+								</div>
+								<!-- end reviews -->
+							</div>
+						</div>
 
-										<li class="reviews__item">
-											<div class="reviews__autor">
-												<img class="reviews__avatar" src="assets/img/user.png" alt="">
-												<span class="reviews__name">Best Marvel movie in my opinion</span>
-												<span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
+					</div>
+					<!-- end content tabs -->
+				</div>
 
-												<span class="reviews__rating"><i class="icon ion-ios-star"></i>9.0</span>
-											</div>
-											<p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-										</li>
-
-										<li class="reviews__item">
-											<div class="reviews__autor">
-												<img class="reviews__avatar" src="assets/img/user.png" alt="">
-												<span class="reviews__name">Best Marvel movie in my opinion</span>
-												<span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
-
-												<span class="reviews__rating"><i class="icon ion-ios-star"></i>7.5</span>
-											</div>
-											<p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-										</li>
-									</ul>
-
-									<form action="#" class="form">
-										<input type="text" class="form__input" placeholder="Title">
-										<textarea class="form__textarea" placeholder="Review"></textarea>
-										<div class="form__slider">
-											<div class="form__slider-rating" id="slider__rating"></div>
-											<div class="form__slider-value" id="form__slider-value"></div>
-										</div>
-										<button type="button" class="form__btn">Send</button>
-									</form>
+				<!-- sidebar -->
+				<div class="col-12 col-lg-4 col-xl-4">
+					<div class="row">
+						<!-- section title -->
+						<div class="col-12">
+							<h2 class="section__title section__title--sidebar">You may also like...</h2>
+						</div>
+						<!-- end section title -->
+						<?php
+						$datas = mysqli_query($db, "SELECT * FROM tb_film WHERE id='$id'");
+						$alldata = mysqli_fetch_assoc($datas);
+						$genre = $alldata['genre'];
+						$sug = mysqli_query($db, "SELECT * FROM tb_film WHERE genre='$genre' AND id!='$id'");
+						while ($s = mysqli_fetch_array($sug)) {
+							$id = $s['id'];
+							$cekrates = mysqli_query($db, "SELECT ROUND(AVG(rating),1) FROM tb_review WHERE id_film='$id'");
+							$rates = $cekrates->fetch_assoc(); ?>
+							<!-- card -->
+							<div class="col-6 col-sm-4 col-lg-6">
+								<div class="card">
+									<div class="card__cover">
+										<img src="assets/poster/<?= $s['poster'] ?>" alt="">
+										<a href="details.php?id=<?= $s['id']?>" class="card__play">
+											<i class="icon ion-ios-play"></i>
+										</a>
+									</div>
+									<div class="card__content">
+										<h3 class="card__title"><a href="#"><?= $s['judul'] ?></a></h3>
+										<span class="card__category">
+											<a href="#"><?= $s['genre'] ?></a>
+										</span>
+										<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rates as $rates) {
+																										print_r($rates);
+																									} ?></span>
+									</div>
 								</div>
 							</div>
-							<!-- end reviews -->
-						</div>
+							<!-- end card -->
+						<?php
+						}
+						?>
 					</div>
-
-
-				</div>
-				<!-- end content tabs -->
-			</div>
-
-			<!-- sidebar -->
-			<div class="col-12 col-lg-4 col-xl-4">
-				<div class="row">
-					<!-- section title -->
-					<div class="col-12">
-						<h2 class="section__title section__title--sidebar">You may also like...</h2>
-					</div>
-					<!-- end section title -->
-
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-6">
-						<div class="card">
-							<div class="card__cover">
-								<img src="assets/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-6">
-						<div class="card">
-							<div class="card__cover">
-								<img src="assets/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-6">
-						<div class="card">
-							<div class="card__cover">
-								<img src="assets/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-6">
-						<div class="card">
-							<div class="card__cover">
-								<img src="assets/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-6">
-						<div class="card">
-							<div class="card__cover">
-								<img src="assets/img/covers/cover5.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-6">
-						<div class="card">
-							<div class="card__cover">
-								<img src="assets/img/covers/cover6.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
 				</div>
 			</div>
-			<!-- end sidebar -->
 		</div>
-	</div>
+		<!-- end sidebar -->
+	<?php } else { ?>
+		<div class="container">
+			<div class="row">
+			<div class="col-12 col-lg-4 col-xl-4">
+					<div class="row">
+						<!-- section title -->
+						<div class="col-12">
+							<h2 class="section__title section__title--sidebar">You may also like...</h2>
+						</div>
+						<!-- end section title -->
+						<?php
+						$datas = mysqli_query($db, "SELECT * FROM tb_film WHERE id='$id'");
+						$alldata = mysqli_fetch_assoc($datas);
+						$genre = $alldata['genre'];
+						$sug = mysqli_query($db, "SELECT * FROM tb_film WHERE genre='$genre' AND id!='$id'");
+						while ($s = mysqli_fetch_array($sug)) {
+							$id = $s['id'];
+							$cekrates = mysqli_query($db, "SELECT ROUND(AVG(rating),1) FROM tb_review WHERE id_film='$id'");
+							$rates = $cekrates->fetch_assoc(); ?>
+							<!-- card -->
+							<div class="col-6 col-sm-4 col-lg-6">
+								<div class="card">
+									<div class="card__cover">
+										<img src="assets/poster/<?= $s['poster'] ?>" alt="">
+										<a href="details.php?id=<?= $s['id']?>" class="card__play">
+											<i class="icon ion-ios-play"></i>
+										</a>
+									</div>
+									<div class="card__content">
+										<h3 class="card__title"><a href="#"><?= $s['judul'] ?></a></h3>
+										<span class="card__category">
+											<a href="#"><?= $s['genre'] ?></a>
+										</span>
+										<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rates as $rates) {
+																										print_r($rates);
+																									} ?></span>
+									</div>
+								</div>
+							</div>
+							<!-- end card -->
+						<?php
+						}
+						?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
 </section>
 <!-- end content -->
 

@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 
 	<!-- Favicons -->
-	<link rel="icon" type="image/png" href="assets/icon/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="assets/img/logo.png" sizes="32x32">
 	<link rel="apple-touch-icon" href="assets/icon/favicon-32x32.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="assets/icon/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="assets/icon/apple-touch-icon-114x114.png">
@@ -30,7 +30,7 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="Dmitry Volkov">
-	<title>FlixGo – Online Movies, TV Shows & Cinema</title>
+	<title>B-Mov – Online Movies, TV Shows & Cinema</title>
 
 </head>
 <body class="body">

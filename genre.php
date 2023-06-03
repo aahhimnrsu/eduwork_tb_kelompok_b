@@ -1,4 +1,6 @@
-<?php $page = "Movies";
+<?php 
+$genre = $_GET['genre'];
+$page = "Genre ".$genre;
 include 'proses/koneksi.php';
 include 'partials/header.php' ?>
 
@@ -37,13 +39,16 @@ include 'partials/header.php' ?>
 			$previous = $halaman - 1;
 			$next = $halaman + 1;
 
-			$data = mysqli_query($db, "SELECT * from tb_film where jenis='movie'");
+			$data = mysqli_query($db, "SELECT * from tb_film where genre='$genre'");
 			$jumlah_data = mysqli_num_rows($data);
 			$total_halaman = ceil($jumlah_data / $batas);
 
-			$dataFilm = mysqli_query($db, "SELECT * from tb_film where jenis='Movie' limit $halaman_awal, $batas");
+			$dataFilm = mysqli_query($db, "SELECT * from tb_film where genre='$genre' limit $halaman_awal, $batas");
 			$nomor = $halaman_awal + 1;
 			while ($d = mysqli_fetch_array($dataFilm)) {
+			$id = $d['id'];
+			$cekrate = mysqli_query($db, "SELECT ROUND(AVG(rating),1) FROM tb_review WHERE id_film='$id'");
+			$rate = $cekrate->fetch_assoc();
 			?>
 				<!-- card -->
 				<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
@@ -59,6 +64,7 @@ include 'partials/header.php' ?>
 							<span class="card__category">
 								<a href="#"><?= $d['genre'] ?></a>
 							</span>
+							<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rate as $rate) { print_r($rate); } ?></span>
 						</div>
 					</div>
 				</div>

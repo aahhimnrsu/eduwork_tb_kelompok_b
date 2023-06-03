@@ -1,4 +1,7 @@
-<?php include 'partials/header.php'?>
+<?php 
+$page = "Home";
+include 'partials/header.php';
+include 'proses/koneksi.php';?>
 
 	<!-- home -->
 	<section class="home">

@@ -8,13 +8,11 @@ $totalseries = mysqli_query($db, 'SELECT COUNT(*) FROM tb_film WHERE jenis="Seri
 $totalakun = mysqli_query($db, 'SELECT COUNT(*) FROM tb_user'); 
 $totalreview = mysqli_query($db, 'SELECT COUNT(*) FROM tb_review'); 
 $totalgenre = mysqli_query($db, 'SELECT COUNT(*) FROM tb_genre'); 
-$totalartist = mysqli_query($db, 'SELECT COUNT(*) FROM tb_artis'); 
 $movies = $totalmovies->fetch_assoc();
 $series = $totalseries->fetch_assoc();
 $akun = $totalakun->fetch_assoc();
 $review = $totalreview->fetch_assoc();
 $genre = $totalgenre->fetch_assoc();
-$artist = $totalartist->fetch_assoc();
 ?>
 
 <div class="page-content">
@@ -73,18 +71,6 @@ $artist = $totalartist->fetch_assoc();
               </div>
               <div class="number dashtext-4"><?php foreach ($genre as $genre) {
                                     print_r($genre);
-                                  } ?> </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="statistic-block block">
-            <div class="progress-details d-flex align-items-end justify-content-between">
-              <div class="title">
-                <div class="icon"><i class="icon-user-outline"></i></div><strong>Artist</strong>
-              </div>
-              <div class="number dashtext-4"><?php foreach ($artist as $artist) {
-                                    print_r($artist);
                                   } ?> </div>
             </div>
           </div>

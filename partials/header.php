@@ -73,14 +73,16 @@
                                         <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Genre</a>
 
                                         <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-                                            <li><a href="years.php">Drama</a></li>
-                                            <li><a href="years.php">Comedy</a></li>
-                                            <li><a href="years.php">Horror</a></li>
-                                            <li><a href="years.php">Action</a></li>
-                                            <li><a href="years.php">Animation</a></li>
-                                            <li><a href="years.php">Fantasy</a></li>
-                                            <li><a href="years.php">Sci-fi</a></li>
-                                            <li><a href="years.php">Documenter</a></li>
+                                            <?php
+                                            include 'proses/koneksi.php';
+                                            $no = 1;
+                                            $query = mysqli_query($db, 'SELECT * FROM tb_genre');
+                                            while ($d = mysqli_fetch_array($query)) {
+                                            ?>
+                                                <li><a href="genre.php?genre=<?= $d['genre']?>"><?= $d['genre']?></a></li>
+                                            <?php
+                                            }
+                                            ?>
                                         </ul>
                                     </li>
                                     <!-- end dropdown -->
@@ -97,13 +99,13 @@
 
                                 <!-- header auth -->
                                 <div class="header__auth">
-                                    <?php 
-                                    if(isset($_SESSION['status'])) { ?>
+                                    <?php
+                                    if (isset($_SESSION['status'])) { ?>
                                         <a href="proses/logout.php" class="header__sign-in">
                                             <i class="icon ion-ios-log-in"></i>
                                             <span>Logout</span>
                                         </a>
-                                    <?php }else{ ?>
+                                    <?php } else { ?>
                                         <a href="signin.php" class="header__sign-in">
                                             <i class="icon ion-ios-log-in"></i>
                                             <span>sign in</span>

@@ -45,17 +45,7 @@ $query = mysqli_query($db, 'SELECT * FROM tb_film WHERE jenis="Movie"');
                         </div>
                         <div class="col-md-6">
                             Main Character
-                            <select name="artis" class="form-control">
-                                <?php
-                                $no = 1;
-                                $query = mysqli_query($db, 'SELECT * FROM tb_artis');
-                                while ($d = mysqli_fetch_array($query)) {
-                                ?>
-                                    <option value="<?= $d['nama_artis']?>"><?= $d['nama_artis']?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
+                            <input type="text" class="form-control" name="artis" placeholder="Enter Main Character Name">
                         </div>
                     </div>
                     <div class="row mb-3">
