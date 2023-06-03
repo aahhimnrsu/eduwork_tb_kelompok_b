@@ -21,9 +21,6 @@
                 } ?>><a href="series.php"> <i class="icon-writing-whiteboard"></i>Series </a></li>
             <li <?php if ($page == "Artist") {
                     echo 'class="active"';
-                } ?>><a href="artis.php"> <i class="icon-user-outline"></i>Artist </a></li>
-            <li <?php if ($page == "Genre") {
-                    echo 'class="active"';
                 } ?>><a href="genre.php"> <i class="icon-list"></i>Genre </a></li>
             <li <?php if ($page == "Review") {
                     echo 'class="active"';

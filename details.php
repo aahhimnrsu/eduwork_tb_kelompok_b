@@ -225,7 +225,7 @@
 									<div class="card__content">
 										<h3 class="card__title"><a href="#"><?= $s['judul'] ?></a></h3>
 										<span class="card__category">
-											<a href="#"><?= $s['genre'] ?></a>
+											<a href="genre.php?genre=<?= $s['genre']?>"><?= $s['genre'] ?></a>
 										</span>
 										<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rates as $rates) {
 																										print_r($rates);
@@ -273,7 +273,7 @@
 									<div class="card__content">
 										<h3 class="card__title"><a href="#"><?= $s['judul'] ?></a></h3>
 										<span class="card__category">
-											<a href="#"><?= $s['genre'] ?></a>
+											<a href="genre.php?genre=<?= $s['genre']?>"><?= $s['genre'] ?></a>
 										</span>
 										<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rates as $rates) {
 																										print_r($rates);

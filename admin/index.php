@@ -26,8 +26,7 @@ $genre = $totalgenre->fetch_assoc();
   <section class="no-padding-top no-padding-bottom">
     <div class="container-fluid">
       <div class="row">
-        
-        <div class="col-md-4 col-sm-6">
+      <div class="col-md-6 col-sm-6">
           <div class="statistic-block block">
             <div class="progress-details d-flex align-items-end justify-content-between">
               <div class="title">
@@ -39,7 +38,7 @@ $genre = $totalgenre->fetch_assoc();
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-6 col-sm-6">
           <div class="statistic-block block">
             <div class="progress-details d-flex align-items-end justify-content-between">
               <div class="title">
@@ -51,6 +50,7 @@ $genre = $totalgenre->fetch_assoc();
             </div>
           </div>
         </div>
+        
         <div class="col-md-4 col-sm-6">
           <div class="statistic-block block">
             <div class="progress-details d-flex align-items-end justify-content-between">
@@ -75,6 +75,7 @@ $genre = $totalgenre->fetch_assoc();
             </div>
           </div>
         </div>
+
         <div class="col-md-4 col-sm-6">
           <div class="statistic-block block">
             <div class="progress-details d-flex align-items-end justify-content-between">
@@ -87,6 +88,7 @@ $genre = $totalgenre->fetch_assoc();
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </section>

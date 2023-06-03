@@ -60,7 +60,7 @@ include 'partials/header.php' ?>
 						<div class="card__content">
 							<h3 class="card__title"><a href="#"><?= $d['judul'] ?></a></h3>
 							<span class="card__category">
-								<a href="#"><?= $d['genre'] ?></a>
+								<a href="genre.php?genre=<?= $s['genre']?>"><?= $d['genre'] ?></a>
 							</span>
 							<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rate as $rate) { print_r($rate); } ?></span>
 						</div>

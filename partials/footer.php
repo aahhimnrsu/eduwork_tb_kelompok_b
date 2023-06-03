@@ -17,9 +17,9 @@
 				<div class="col-6 col-sm-4 col-md-3">
 					<h6 class="footer__title">Resources</h6>
 					<ul class="footer__list">
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Pricing Plan</a></li>
-						<li><a href="#">Help</a></li>
+						<li><a href="index.php">Home</a></li>
+						<li><a href="about.php">About Us</a></li>
+						<li><a href="faq.php">FAQ</a></li>
 					</ul>
 				</div>
 				<!-- end footer list -->
@@ -39,8 +39,8 @@
 				<div class="col-12 col-sm-4 col-md-3">
 					<h6 class="footer__title">Contact</h6>
 					<ul class="footer__list">
-						<li><a href="tel:+18002345678">+1 (800) 234-5678</a></li>
-						<li><a href="mailto:support@moviego.com">support@flixgo.com</a></li>
+						<li><a href="tel:+18002345678">+62 8519872822</a></li>
+						<li><a href="mailto:support@moviego.com">support@bmov.com</a></li>
 					</ul>
 					<ul class="footer__social">
 						<li class="facebook"><a href="#"><i class="icon ion-logo-facebook"></i></a></li>
@@ -50,19 +50,6 @@
 					</ul>
 				</div>
 				<!-- end footer list -->
-
-				<!-- footer copyright -->
-				<div class="col-12">
-					<div class="footer__copyright">
-						<small><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></small>
-
-						<ul>
-							<li><a href="#">Terms of Use</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-						</ul>
-					</div>
-				</div>
-				<!-- end footer copyright -->
 			</div>
 		</div>
 	</footer>
