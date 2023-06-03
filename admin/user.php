@@ -1,7 +1,10 @@
 <?php $page = "User";
 include 'partials/header.php';
 include 'partials/navbar.php';
-include 'partials/sidebar.php' ?>
+include 'partials/sidebar.php';
+include '../proses/koneksi.php';
+$query = mysqli_query($db, 'SELECT * FROM tb_user');
+?>
 
 <div class="page-content">
   <div class="page-header">
@@ -14,7 +17,6 @@ include 'partials/sidebar.php' ?>
   <section class="no-padding-top no-padding-bottom">
     <div class="container-fluid">
       <div class="block">
-        <div class="title"><a class="btn btn-primary btn-sm font-weight-bold text-light">+ Add User</a></div>
         <div class="table-responsive">
           <table class="table table-striped table-hover" id="myTable">
             <thead>
@@ -27,13 +29,24 @@ include 'partials/sidebar.php' ?>
               </tr>
             </thead>
             <tbody>
+            <?php if(mysqli_num_rows($query) > 0) {?>
+                <?php 
+                  $no = 1;
+                  while ($d= mysqli_fetch_array($query)) {      
+                ?>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <th><?= $no ?></th>
+                <td><?= $d['nama']?></td>
+                <td><?= $d['username']?></td>
+                <td><?= $d['role']?></td>
+                <td>
+                <a href="edituser.php?id=<?php echo $d["id"]?>">Update</a> |
+                <a href="proses/deleteuser.php?id=<?php echo $d["id"]?>">Delete</a>
+                </td>
               </tr>
+              <?php $no++;
+            }
+            } ?>
             </tbody>
           </table>
         </div>

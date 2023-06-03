@@ -1,9 +1,9 @@
-<?php $page = "Series";
+<?php $page = "Artist";
 include 'partials/header.php';
 include 'partials/navbar.php';
 include 'partials/sidebar.php';
 include '../proses/koneksi.php';
-$query = mysqli_query($db, 'SELECT * FROM tb_film WHERE jenis="Series"');
+$query = mysqli_query($db, 'SELECT * FROM tb_artis');
 ?>
 
 <div class="page-content">
@@ -17,15 +17,15 @@ $query = mysqli_query($db, 'SELECT * FROM tb_film WHERE jenis="Series"');
   <section class="no-padding-top no-padding-bottom">
     <div class="container-fluid">
       <div class="block">
-        <div class="title"><a href="tambahseries.php" class="btn btn-primary btn-sm font-weight-bold text-light">+ Add New Series</a></div>
+        <div class="title"><a href="tambahartis.php" class="btn btn-primary btn-sm font-weight-bold text-light">+ Add New Artist</a></div>
         <div class="table-responsive">
           <table class="table table-striped table-hover" id="myTable">
             <thead>
               <tr>
                 <th>No.</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Year</th>
+                <th>Name</th>
+                <th>Birth</th>
+                <th>City</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -37,12 +37,12 @@ $query = mysqli_query($db, 'SELECT * FROM tb_film WHERE jenis="Series"');
                 ?>
                   <tr>
                     <td><?php echo $no?></td>
-                    <td><?php echo $data["judul"]?></td>
-                    <td><?php echo $data["genre"]?></td>
-                    <td><?php echo $data["tahun"]?></td>
+                    <td><?php echo $data["nama_artis"]?></td>
+                    <td><?php echo $data["tanggal_lahir"]?></td>
+                    <td><?php echo $data["asal_kota"]?></td>
                     <td>
-                      <a href="editfilm.php?id=<?php echo $data["id"]?>">Update</a> |
-                      <a href="proses/deletefilm.php?id=<?php echo $data["id"]?>">Delete</a>
+                      <a href="editartis.php?id=<?php echo $data["id"]?>">Update</a> |
+                      <a href="proses/deleteartis.php?id=<?php echo $data["id"]?>">Delete</a>
                     </td>                                     
                   </tr>
                 <?php $no++; }?>

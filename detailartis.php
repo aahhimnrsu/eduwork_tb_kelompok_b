@@ -44,8 +44,7 @@
 									<ul class="card__meta">
 										<li><span>Genre:</span> <?= $d['genre'] ?></li>
 										<li><span>Release year:</span> <?= $d['tahun'] ?></li>
-										<li><span>Country:</span><?= $d['negara'] ?></li>
-										<li><span>Main Character:</span><?= $d['artis'] ?></li>
+										<li><span>Country:</span> <a href="#"><?= $d['negara'] ?></a> </li>
 									</ul>
 
 									<div class="card__description card__description--details">
@@ -61,7 +60,7 @@
 
 				<!-- player -->
 				<div class="col-12 col-xl-6">
-					<iframe width="600px" height="320px" src="<?= $d['link_video']?>">
+					<iframe width="600px" height="320px" src="https://www.youtube.com/embed/eI4an8aSsgw">
 					</iframe>
 				</div>
 				<!-- end player -->
