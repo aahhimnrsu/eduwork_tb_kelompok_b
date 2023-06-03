@@ -4,8 +4,28 @@ B-MOV is an online platform that provides access to a curated collection of the 
 
 
 ## Screenshots
-
-![App Screenshot](screenshots/Screenshot (407).png)
+<table width="0" border="0">
+  <tr>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(407).png"></td>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(409).png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(410).png"></td>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(411).png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(415).png"></td>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(414).png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(416).png"></td>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(418).png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(419).png"></td>
+    <td><img src="https://github.com/aahhimnrsu/eduwork_tb_kelompok_b/blob/main/screenshot/Screenshot%20(420).png"></td>
+  </tr>
+</table>
 
 
 ## Features
@@ -21,10 +41,10 @@ B-MOV is an online platform that provides access to a curated collection of the 
 - Sorting films by type
 
 ## 👥 Our Team
-[![portfolio](https://img.shields.io/badge/Muhammad_Raihan-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/aahhimnrsu)
+[![portfolio](https://img.shields.io/badge/Muhammad_Raihan-000?style=flat&logo=Github&logoColor=white)](https://github.com/aahhimnrsu)
 
-[![portfolio](https://img.shields.io/badge/Dicky_Satria_Mahendra-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dicky190901)
+[![portfolio](https://img.shields.io/badge/Dicky_Satria_Mahendra-000?style=flat&logo=Github&logoColor=white)](https://github.com/dicky190901)
 
-[![portfolio](https://img.shields.io/badge/Yuliana_Putri_Setyowati-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yulips)
+[![portfolio](https://img.shields.io/badge/Yuliana_Putri_Setyowati-000?style=flat&logo=Github&logoColor=white)](https://github.com/yulips)
 
-[![portfolio](https://img.shields.io/badge/Prilantania_Antamihayu-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/prilantania)
+[![portfolio](https://img.shields.io/badge/Prilantania_Antamihayu-000?style=flat&logo=Github&logoColor=white)](https://github.com/prilantania)
