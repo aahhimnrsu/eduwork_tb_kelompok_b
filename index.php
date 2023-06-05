@@ -17,6 +17,9 @@ include 'proses/koneksi.php'; ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
+			<?php if (isset($_SESSION['status'])) { ?>
+				<h4 class="home__title" style="font-size: 20px;"><b>Welcome, </b><?= $_SESSION['nama']?></h4>
+			<?php } ?>
 				<h1 class="home__title"><b>NEW </b>UPDATES </h1>
 
 				<button class="home__nav home__nav--prev" type="button">

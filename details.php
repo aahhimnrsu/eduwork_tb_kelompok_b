@@ -215,7 +215,7 @@
 							<div class="col-6 col-sm-4 col-lg-6">
 								<div class="card">
 									<div class="card__cover">
-										<img src="assets/poster/<?= $s['poster'] ?>" alt="">
+										<img src="assets/poster/<?= $s['poster'] ?>" alt="" height="250px">
 										<a href="details.php?id=<?= $s['id'] ?>" class="card__play">
 											<i class="icon ion-ios-play"></i>
 										</a>
@@ -258,7 +258,7 @@
 											while ($r = mysqli_fetch_array($review)) { ?>
 												<li class="reviews__item">
 													<div class="reviews__autor">
-														<img class="reviews__avatar" src="assets/img/user.png" alt="">
+														<img class="reviews__avatar" src="assets/img/user.png" alt="" >
 														<span class="reviews__name"><?= $r['subject'] ?></span>
 														<span class="reviews__time"><?= $r['terakhir_diubah'] ?> by <?= $r['nama'] ?></span>
 
@@ -301,7 +301,7 @@
 							<div class="col-6 col-sm-4 col-lg-6">
 								<div class="card">
 									<div class="card__cover">
-										<img src="assets/poster/<?= $s['poster'] ?>" alt="">
+										<img src="assets/poster/<?= $s['poster'] ?>" alt="" height="250px">
 										<a href="details.php?id=<?= $s['id'] ?>" class="card__play">
 											<i class="icon ion-ios-play"></i>
 										</a>

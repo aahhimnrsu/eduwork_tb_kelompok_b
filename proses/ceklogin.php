@@ -32,6 +32,7 @@ if($cek > 0){
 	}else if($data['role']=="user"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
+		$_SESSION['nama'] = $data['nama'];
 		$_SESSION['id'] = $data['id'];
 		$_SESSION['status'] = "login";
 		$_SESSION['role'] = "user";
