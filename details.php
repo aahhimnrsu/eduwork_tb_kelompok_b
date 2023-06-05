@@ -182,7 +182,13 @@
 											<input type="text" class="form__input" name="subject" placeholder="Subject">
 											<textarea class="form__textarea" placeholder="Review" name="review"></textarea>
 											<input type="number" class="form__input" placeholder="Rating" min="0" max="10" step="0.1" style="margin-top: 10px; width:20%;" name="rating">
-											<button type="submit" class="form__btn">Send</button>
+											<button type="submit" class="form__btn" onclick="myFunction()">Send</button>
+											<script>
+												function myFunction() {
+												alert("Thank you for the rating!");
+												}
+											</script>
+				
 										</form>
 									</div>
 								</div>
