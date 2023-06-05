@@ -9,12 +9,12 @@
 	<!-- details content -->
 	<div class="container">
 		<div class="row">
-				<?php include 'proses/koneksi.php';
-				$id = $_GET['id'];
-				$data = mysqli_query($db, "SELECT * FROM tb_film WHERE id='$id'");
-				$cekrate = mysqli_query($db, "SELECT ROUND(AVG(rating),1) FROM tb_review WHERE id_film='$id'");
-				$rate = $cekrate->fetch_assoc();
-				while ($d = mysqli_fetch_array($data)) { ?>
+			<?php include 'proses/koneksi.php';
+			$id = $_GET['id'];
+			$data = mysqli_query($db, "SELECT * FROM tb_film WHERE id='$id'");
+			$cekrate = mysqli_query($db, "SELECT ROUND(AVG(rating),1) FROM tb_review WHERE id_film='$id'");
+			$rate = $cekrate->fetch_assoc();
+			while ($d = mysqli_fetch_array($data)) { ?>
 				<!-- title -->
 				<div class="col-12">
 					<h1 class="details__title"><?= $d['judul'] ?></h1>
@@ -119,9 +119,7 @@
 					<!-- content tabs nav -->
 					<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
 						<li class="nav-item">
-							<?php if (isset($_SESSION['status'])) { ?>
-								<a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a>
-							<?php } ?>
+							<a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a>
 						</li>
 					</ul>
 					<!-- end content tabs nav -->
@@ -218,14 +216,14 @@
 								<div class="card">
 									<div class="card__cover">
 										<img src="assets/poster/<?= $s['poster'] ?>" alt="">
-										<a href="details.php?id=<?= $s['id']?>" class="card__play">
+										<a href="details.php?id=<?= $s['id'] ?>" class="card__play">
 											<i class="icon ion-ios-play"></i>
 										</a>
 									</div>
 									<div class="card__content">
 										<h3 class="card__title"><a href="#"><?= $s['judul'] ?></a></h3>
 										<span class="card__category">
-											<a href="genre.php?genre=<?= $s['genre']?>"><?= $s['genre'] ?></a>
+											<a href="genre.php?genre=<?= $s['genre'] ?>"><?= $s['genre'] ?></a>
 										</span>
 										<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rates as $rates) {
 																										print_r($rates);
@@ -245,7 +243,45 @@
 	<?php } else { ?>
 		<div class="container">
 			<div class="row">
-			<div class="col-12 col-lg-4 col-xl-4">
+				<div class="col-12 col-lg-8 col-xl-8">
+					<!-- content tabs -->
+					<div class="tab-content" id="myTabContent">
+
+						<div class="tab-pane fade show active" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
+							<div class="row">
+								<!-- reviews -->
+								<div class="col-12">
+									<div class="reviews">
+										<ul class="reviews__list">
+											<?php
+											$review = mysqli_query($db, "SELECT tb_review.*, tb_user.nama as nama FROM tb_review LEFT JOIN tb_user ON tb_review.id_user = tb_user.id WHERE id_film='$id'");
+											while ($r = mysqli_fetch_array($review)) { ?>
+												<li class="reviews__item">
+													<div class="reviews__autor">
+														<img class="reviews__avatar" src="assets/img/user.png" alt="">
+														<span class="reviews__name"><?= $r['subject'] ?></span>
+														<span class="reviews__time"><?= $r['terakhir_diubah'] ?> by <?= $r['nama'] ?></span>
+
+														<span class="reviews__rating"><i class="icon ion-ios-star"></i><?= $r['rating'] ?></span>
+													</div>
+													<p class="reviews__text"><?= $r['review'] ?></p>
+												</li>
+											<?php
+											}
+											?>
+										</ul>
+									</div>
+								</div>
+								<!-- end reviews -->
+							</div>
+						</div>
+
+					</div>
+					<!-- end content tabs -->
+				</div>
+
+				<!-- sidebar -->
+				<div class="col-12 col-lg-4 col-xl-4">
 					<div class="row">
 						<!-- section title -->
 						<div class="col-12">
@@ -266,14 +302,14 @@
 								<div class="card">
 									<div class="card__cover">
 										<img src="assets/poster/<?= $s['poster'] ?>" alt="">
-										<a href="details.php?id=<?= $s['id']?>" class="card__play">
+										<a href="details.php?id=<?= $s['id'] ?>" class="card__play">
 											<i class="icon ion-ios-play"></i>
 										</a>
 									</div>
 									<div class="card__content">
 										<h3 class="card__title"><a href="#"><?= $s['judul'] ?></a></h3>
 										<span class="card__category">
-											<a href="genre.php?genre=<?= $s['genre']?>"><?= $s['genre'] ?></a>
+											<a href="genre.php?genre=<?= $s['genre'] ?>"><?= $s['genre'] ?></a>
 										</span>
 										<span class="card__rate"><i class="icon ion-ios-star"></i><?php foreach ($rates as $rates) {
 																										print_r($rates);
@@ -289,6 +325,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- end sidebar -->
 	<?php } ?>
 </section>
 <!-- end content -->
