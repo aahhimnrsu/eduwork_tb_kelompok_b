@@ -14,7 +14,7 @@ include 'partials/header.php' ?>
 
 					<!-- breadcrumb -->
 					<ul class="breadcrumb">
-						<li class="breadcrumb__item"><a href="#">Home</a></li>
+						<li class="breadcrumb__item"><a href="index.php">Home</a></li>
 						<li class="breadcrumb__item breadcrumb__item--active"><?= $page ?></li>
 					</ul>
 					<!-- end breadcrumb -->
