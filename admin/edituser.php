@@ -42,7 +42,7 @@ include '../proses/koneksi.php';
                             </div>
                             <div class="col-md-6">
                                 Password
-                                <input type="password" class="form-control" name="password" placeholder="Enter Password" value="<?= $d['password'] ?>">
+                                <input type="password" class="form-control" name="password" placeholder="Enter Password">
                             </div>
                         </div>
                         <div class="row mb-3">

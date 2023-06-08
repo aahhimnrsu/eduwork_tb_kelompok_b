@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jun 2023 pada 14.25
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 7.3.31
+-- Generation Time: Jun 08, 2023 at 02:21 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_film`
+-- Table structure for table `tb_film`
 --
 
 CREATE TABLE `tb_film` (
@@ -41,13 +41,13 @@ CREATE TABLE `tb_film` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_film`
+-- Dumping data for table `tb_film`
 --
 
 INSERT INTO `tb_film` (`id`, `poster`, `judul`, `jenis`, `genre`, `artis`, `deskripsi`, `tahun`, `negara`, `link_video`) VALUES
 (33, 'harry5.jpg', 'Harry Potter and Order of Phoenix', 'Movie', 'Fantasy', 'Daniel Radcliffe', 'Now in his fifth year at Hogwarts, Harry (Daniel Radcliffe) learns that many in the wizarding community do not know the truth of his encounter with Lord Voldemort. Cornelius Fudge, minister of Magic, appoints his toady, Dolores Umbridge, as Defense Against the Dark Arts teacher, for he fears that professor Dumbledore will take his job. But her teaching is deficient and her methods, cruel, so Harry prepares a group of students to defend the school against a rising tide of evil.', 2007, 'USA', 'https://www.youtube.com/embed/y6ZW7KXaXYk'),
 (34, 'dokter cha.jpg', 'Dr. Cha', 'Series', 'Drama', 'Daniel Radcliff', '', 2023, 'Korea Selatan', 'https://www.youtube.com/embed/PxnupLto-Ww'),
-(35, 'My Sassy Girl.jpg', 'My Sassy Girl', 'Movie', 'Drama', 'Jefri Nichol', 'My Sassy Girl Indonesia is a romantic comedy film that tells the story of an ordinary Indonesian man who unexpectedly falls in love with a girl who is full of arrogance and recklessness. They both find themselves involved in a series of hilarious and unpredictable situations that test the mans resilience and patience. However, as time goes by, they start to get to know each other and experience a deep connection, creating funny, romantic, and emotionally charged moments that teach them about true love and overcoming their differences to build a strong relationship.', 2022, 'Indonesia', 'https://www.youtube.com/embed/IEm0t4YW0Xw'),
+(35, 'My Sassy Girl.jpg', 'My Sassy', 'Movie', 'Comedy', 'Jefri Nichol', 'My Sassy Girl Indonesia is a romantic comedy film that tells the story of an ordinary Indonesian man who unexpectedly falls in love with a girl who is full of arrogance and recklessness. They both find themselves involved in a series of hilarious and unpredictable situations that test the mans resilience and patience. However, as time goes by, they start to get to know each other and experience a deep connection, creating funny, romantic, and emotionally charged moments that teach them about true love and overcoming their differences to build a strong relationship.', 2022, 'Indonesia', 'https://www.youtube.com/embed/IEm0t4YW0Xw'),
 (36, 'harry1.jpeg', 'Harry Potter and The Philosopers Stone', 'Movie', 'Fantasy', 'Daniel Radcliffe', 'Adaptation of the first of J.K. Rowling popular children novels about Harry Potter, a boy who learns on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own. He is summoned from his life as an unwanted child to become a student at Hogwarts, an English boarding school for wizards. There, he meets several friends who become his closest allies and help him discover the truth about his parents mysterious deaths.', 2001, 'USA', 'https://www.youtube.com/embed/nzNvymsSHxM'),
 (37, 'mario bros.jpg', 'The Super Mario Bros', 'Series', 'Comedy', 'Anya Taylor-Joy, Charlie Day, Chris Pratt, Fred Armisen, Jack Black, Keegan-Michael Key, Kevin Michael Richardson, Khary Payton, Sebastian Maniscalco, Seth Rogen', '', 2023, 'America', 'https://www.youtube.com/embed/TnGl01FkMMo'),
 (38, 'Revenge of Others.jpg', 'Revenge of Others', 'Series', 'Drama', 'Chae Sang-woo, Chung Su-bin, Jin Ho Eun, Kim Joo-ryoung, Lee Soo-Min, Lomon, Seo Ji-hoon, Shin Ye Eun, Woo Yeon, Yeon Oh', '', 2022, 'Korea Selatan', 'https://www.youtube.com/embed/GJtu6iUA8tQ'),
@@ -61,7 +61,7 @@ INSERT INTO `tb_film` (`id`, `poster`, `judul`, `jenis`, `genre`, `artis`, `desk
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_genre`
+-- Table structure for table `tb_genre`
 --
 
 CREATE TABLE `tb_genre` (
@@ -71,7 +71,7 @@ CREATE TABLE `tb_genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_genre`
+-- Dumping data for table `tb_genre`
 --
 
 INSERT INTO `tb_genre` (`id`, `genre`, `terakhir_diubah`) VALUES
@@ -85,7 +85,7 @@ INSERT INTO `tb_genre` (`id`, `genre`, `terakhir_diubah`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_review`
+-- Table structure for table `tb_review`
 --
 
 CREATE TABLE `tb_review` (
@@ -99,7 +99,7 @@ CREATE TABLE `tb_review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_review`
+-- Dumping data for table `tb_review`
 --
 
 INSERT INTO `tb_review` (`id`, `id_film`, `id_user`, `subject`, `review`, `rating`, `terakhir_diubah`) VALUES
@@ -116,12 +116,15 @@ INSERT INTO `tb_review` (`id`, `id_film`, `id_user`, `subject`, `review`, `ratin
 (13, 39, 4, 'good and nice', 'scary because the movie feels real', 8.2, '2023-06-04 13:53:57'),
 (14, 38, 4, 'very good', 'highly anticipated series', 9.1, '2023-06-04 13:56:42'),
 (15, 40, 4, 'animasi', 'this pokemon is cute and looks real, but a bit boring', 7.9, '2023-06-04 13:59:35'),
-(16, 41, 4, 'drama ', 'a sad drama so that those who watch it feel like it', 8, '2023-06-04 14:01:22');
+(16, 41, 4, 'drama ', 'a sad drama so that those who watch it feel like it', 8, '2023-06-04 14:01:22'),
+(17, 43, 5, 'kerennn', 'aku suka banget sama film ini', 9.5, '2023-06-05 14:50:33'),
+(18, 43, 3, 'Borrrrinngggg!!!', 'i think this movie is so boring', 5, '2023-06-05 15:04:38'),
+(19, 43, 6, 'nice', '213', 1.4, '2023-06-05 15:34:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -133,70 +136,72 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id`, `nama`, `username`, `password`, `role`) VALUES
-(1, 'Rei', 'admin', '123', 'admin'),
-(2, 'Dicky', 'dicky', '123', 'admin'),
-(3, 'Raihan', 'muhraihans', '123', 'user'),
-(4, 'Yuliana', 'yuli', '1407', 'user');
+(1, 'Admin', 'admin', '202cb962ac59075b964b07152d234b70', 'admin'),
+(2, 'Diki', 'dicky', '202cb962ac59075b964b07152d234b70', 'admin'),
+(3, 'Raihan', 'muhraihans', '202cb962ac59075b964b07152d234b70', 'user'),
+(4, 'Yuliana', 'yuli', '202cb962ac59075b964b07152d234b70', 'user'),
+(5, 'Prilan', 'prilan', '202cb962ac59075b964b07152d234b70', 'user'),
+(7, 'eduwork', 'eduwork', '202cb962ac59075b964b07152d234b70', 'user');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tb_film`
+-- Indexes for table `tb_film`
 --
 ALTER TABLE `tb_film`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_genre`
+-- Indexes for table `tb_genre`
 --
 ALTER TABLE `tb_genre`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_review`
+-- Indexes for table `tb_review`
 --
 ALTER TABLE `tb_review`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_film`
+-- AUTO_INCREMENT for table `tb_film`
 --
 ALTER TABLE `tb_film`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_genre`
+-- AUTO_INCREMENT for table `tb_genre`
 --
 ALTER TABLE `tb_genre`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tb_review`
+--
+ALTER TABLE `tb_review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `tb_user`
+--
+ALTER TABLE `tb_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT untuk tabel `tb_review`
---
-ALTER TABLE `tb_review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT untuk tabel `tb_user`
---
-ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
