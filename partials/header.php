@@ -79,7 +79,7 @@
                                             $query = mysqli_query($db, 'SELECT * FROM tb_genre');
                                             while ($d = mysqli_fetch_array($query)) {
                                             ?>
-                                                <li><a href="genre.php?genre=<?= $d['genre']?>"><?= $d['genre']?></a></li>
+                                                <li><a href="genre.php?genre=<?= $d['genre'] ?>"><?= $d['genre'] ?></a></li>
                                             <?php
                                             }
                                             ?>
@@ -99,6 +99,9 @@
 
                                 <!-- header auth -->
                                 <div class="header__auth">
+                                    <button class="header__search-btn" type="button">
+                                        <i class="icon ion-ios-search"></i>
+                                    </button>
                                     <?php
                                     if (isset($_SESSION['status'])) { ?>
                                         <a href="proses/logout.php" class="header__sign-in">
@@ -128,14 +131,14 @@
             </div>
 
             <!-- header search -->
-            <form action="#" class="header__search">
+            <form action="search.php" method="get" class="header__search">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="header__search-content">
-                                <input type="text" placeholder="Search for a movie, TV Series that you are looking for">
+                                <input type="text" placeholder="Search for a movie, TV Series that you are looking for" name="search">
 
-                                <button type="button">search</button>
+                                <button type="submit">search</button>
                             </div>
                         </div>
                     </div>
