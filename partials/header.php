@@ -32,6 +32,38 @@
         <meta name="keywords" content="">
         <meta name="author" content="Dmitry Volkov">
         <title>B-Mov – Online Movies, TV Shows & Cinema</title>
+        <style>
+            .button__unlike {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                width: 40px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+                background-image: -moz-linear-gradient(90deg, #888888 0%, #cecece 100%);
+                background-image: -webkit-linear-gradient(90deg, #888888 0%, #cecece 100%);
+                background-image: -ms-linear-gradient(90deg, #888888 0%, #cecece 100%);
+                background-image: linear-gradient(90deg, #888888 0%, #cecece 100%);
+                -webkit-box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+                box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+                opacity: 0.85;
+                margin-left: 20px;
+            }
+
+            .button__unlike span {
+                display: none;
+            }
+
+            .button__unlike i {
+                color: #fff;
+                font-size: 24px;
+            }
+
+            .button__unlike:hover {
+                opacity: 1;
+            }
+        </style>
 
     </head>
 
@@ -60,12 +92,22 @@
 
                                     <!-- dropdown -->
                                     <li class="header__nav-item">
-                                        <a href="movies.php" class="header__nav-link">Movies</a>
+                                        <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Movies</a>
+
+                                        <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
+                                            <li><a href="movies.php">All Movies</a></li>
+                                            <li><a href="mostlikemovies.php">Most Likes Movies</a></li>
+                                        </ul>
                                     </li>
                                     <!-- end dropdown -->
 
                                     <li class="header__nav-item">
-                                        <a href="series.php" class="header__nav-link">TV Series</a>
+                                        <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Series</a>
+
+                                        <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
+                                            <li><a href="series.php">All Series</a></li>
+                                            <li><a href="mostlikeseries.php">Most Likes Series</a></li>
+                                        </ul>
                                     </li>
 
                                     <!-- dropdown -->

@@ -1,4 +1,6 @@
-<?php include 'partials/header.php'; ?>
+<?php include 'partials/header.php';
+include 'proses/koneksi.php';
+?>
 
 <!-- details -->
 <section class="section details">
@@ -9,9 +11,14 @@
 	<!-- details content -->
 	<div class="container">
 		<div class="row">
-			<?php include 'proses/koneksi.php';
+			<?php
 			$id = $_GET['id'];
 			$data = mysqli_query($db, "SELECT * FROM tb_film WHERE id='$id'");
+			if (isset($_SESSION['status'])) {
+			$id_user = $_SESSION['id'];
+			$ceklike = mysqli_query($db, "SELECT wholikes FROM tb_film WHERE id='$id' AND wholikes LIKE '%/$id_user/%'");
+			$like = mysqli_fetch_array($ceklike);
+			};
 			$cekrate = mysqli_query($db, "SELECT ROUND(AVG(rating),1) FROM tb_review WHERE id_film='$id'");
 			$rate = $cekrate->fetch_assoc();
 			while ($d = mysqli_fetch_array($data)) { ?>
@@ -29,6 +36,21 @@
 							<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
 								<div class="card__cover">
 									<img src="assets/poster/<?= $d['poster'] ?>" alt="<?= $d['poster'] ?>">
+									<?php if (isset($_SESSION['status'])) { ?>
+										<?php if ($like == NULL) { ?>
+											<form action="proses/proseslike.php" method="POST" style="margin-top: 20px;">
+												<input type="text" name="id_film" value="<?= $id ?>" hidden>
+												<input type="text" class="form__input" name="id_user" hidden value="<?= $_SESSION['id'] ?>">
+												<button name="like" type="submit" class="header__sign-in" style="color: white; font-weight: 700; width: 100%; margin-left: 0px;">❤️ Like This Film</button>
+											</form>
+										<?php } else { ?>
+											<form action="proses/prosesunlike.php" method="POST" style="margin-top: 20px;">
+												<input type="text" name="id_film" value="<?= $id ?>" hidden>
+												<input type="text" class="form__input" name="id_user" hidden value="<?= $_SESSION['id'] ?>">
+												<button name="unlike" type="submit" class="button__unlike" style="color: white; font-weight: 700; width: 100%; margin-left: 0px;">❤️ Unlike This Film</button>
+											</form>
+										<?php } ?>
+									<?php } ?>
 								</div>
 							</div>
 							<!-- end card cover -->
@@ -44,6 +66,7 @@
 											<li>HD</li>
 											<li>1080p</li>
 										</ul>
+										<span class="card__rate" style="margin-left: 10px;"><i class="icon ion-ios-heart"></i><?= $d['likes'] ?> Likes</span>
 									</div>
 
 									<ul class="card__meta">
@@ -185,10 +208,10 @@
 											<button type="submit" class="form__btn" onclick="myFunction()">Send</button>
 											<script>
 												function myFunction() {
-												alert("Thank you for the rating!");
+													alert("Thank you for the rating!");
 												}
 											</script>
-				
+
 										</form>
 									</div>
 								</div>
@@ -264,7 +287,7 @@
 											while ($r = mysqli_fetch_array($review)) { ?>
 												<li class="reviews__item">
 													<div class="reviews__autor">
-														<img class="reviews__avatar" src="assets/img/user.png" alt="" >
+														<img class="reviews__avatar" src="assets/img/user.png" alt="">
 														<span class="reviews__name"><?= $r['subject'] ?></span>
 														<span class="reviews__time"><?= $r['terakhir_diubah'] ?> by <?= $r['nama'] ?></span>
 
