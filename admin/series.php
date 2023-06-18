@@ -26,6 +26,7 @@ $query = mysqli_query($db, 'SELECT * FROM tb_film WHERE jenis="Series"');
                 <th>Title</th>
                 <th>Genre</th>
                 <th>Year</th>
+                <th>Likes</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -40,6 +41,7 @@ $query = mysqli_query($db, 'SELECT * FROM tb_film WHERE jenis="Series"');
                     <td><?php echo $data["judul"]?></td>
                     <td><?php echo $data["genre"]?></td>
                     <td><?php echo $data["tahun"]?></td>
+                    <td><?php echo $data["likes"]?></td>
                     <td>
                       <a href="editfilm.php?id=<?php echo $data["id"]?>">Update</a> |
                       <a href="proses/deletefilm.php?id=<?php echo $data["id"]?>">Delete</a>
