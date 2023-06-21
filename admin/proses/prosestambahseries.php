@@ -46,7 +46,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["poster"]["tmp_name"], $target_file)) {
       
-      mysqli_query($db, "insert into tb_film values('','$target_file','$judul','$jenis','$genre','$artis','$deskripsi','$tahun','$negara','$link_video')");
+      mysqli_query($db, "insert into tb_film values('','$target_file','$judul','$jenis','$genre','$artis','$deskripsi','$tahun','$negara','$link_video','' ,'')");
       header('location:../series.php');
     } else {
       echo "Sorry, there was an error uploading your file.";

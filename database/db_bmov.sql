@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2023 at 02:07 PM
+-- Generation Time: Jun 21, 2023 at 02:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -38,8 +38,8 @@ CREATE TABLE `tb_film` (
   `tahun` year(4) NOT NULL,
   `negara` varchar(50) NOT NULL,
   `link_video` text NOT NULL,
-  `likes` int(11) NOT NULL,
-  `wholikes` text NOT NULL
+  `likes` int(11) DEFAULT NULL,
+  `wholikes` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -185,7 +185,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_film`
 --
 ALTER TABLE `tb_film`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `tb_genre`
